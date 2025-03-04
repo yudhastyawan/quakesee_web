@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quakesee_web"               # Nama paket di PyPI
+version = "0.1.0"                    # Versi aplikasi
+description = "A web app using HoloViz Panel"
+readme = "README.md"                 # File dokumentasi
+authors = [{ name = "Yudha Styawan", email = "yudhastyawan" }]
+license = { text = "GPL-3.0-only" }            # Lisensi (MIT, Apache, dsb.)
+requires-python = ">=3.10"
+dependencies = [
+    "param>=2.1.1",
+    "panel>=1.5.4",
+    "obspy>=1.4.0",
+    "numpy>=1.26.4",
+    "pandas>=2.2.3",
+    "plotly>=6.0.0",
+    "bokeh>=3.6.2",
+    "pyproj>=3.4.1",
+    "matplotlib>=3.9.2"
+]
+
+[project.urls]
+Homepage = "https://github.com/yudhastyawan/quakesee_web"
+Repository = "https://github.com/yudhastyawan/quakesee_web"
+
+[project.scripts]
+quakesee = "quakesee_web.app:main"

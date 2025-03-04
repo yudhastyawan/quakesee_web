@@ -1,0 +1,9 @@
+param==2.1.1
+panel==1.5.4
+obspy==1.4.0
+numpy==1.26.4
+pandas==2.2.3
+plotly==6.0.0
+bokeh==3.6.2
+pyproj==3.4.1
+matplotlib==3.9.2
