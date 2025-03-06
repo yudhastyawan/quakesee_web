@@ -1,10 +1,11 @@
 import panel as pn
 import param
 # from wave_loader import WaveLoader
-from wave_fetcher_web import WaveFetcher
+from quakesee_web.wave_fetcher_web import WaveFetcher
 # from station_loader import StationLoader
-from eqcat_fetcher_web import EQCatFetcher
-from about_web import About
+from quakesee_web.eqcat_fetcher_web import EQCatFetcher
+from quakesee_web.about_web import About
+from pathlib import Path
 
 # pn.extension('terminal', template='bootstrap', sizing_mode="stretch_width")
 pn.extension('terminal', 'plotly', 'tabulator', template='bootstrap', sizing_mode="stretch_width")
@@ -76,10 +77,12 @@ class MainApp(param.Parameterized):
                 content.on_click(self.navigate_handler)
         
         return pn.Column(
+            # Menambahkan gambar dengan ukuran tertentu
+            pn.pane.Image(Path(__file__).parent/"logo.png", width=220, height=150),
             self.accordion,  # Hanya menampilkan accordion tanpa tombol toggle
             sizing_mode="fixed",
             width=220,
-            styles={"background": "#f0f0f0"}
+            # styles={"background": "#f0f0f0"}
         )
     
     def navigate_handler(self, event):

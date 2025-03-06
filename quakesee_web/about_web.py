@@ -22,18 +22,18 @@ class About(pn.Column):
 
         # Deskripsi program
         description = pn.pane.Markdown(
-            "**Disclaimer:**\n"
+            "**Disclaimer:**\n\n"
             "We are not responsible for any data processing errors that may occur in this program. "
             "Users are encouraged to verify processing results before making decisions based on the "
             "information provided.\n\n"
-            "**About the Program:**\n"
+            "**About the Program:**\n\n"
             "QuakeSee is an application designed to visualize earthquake data with features such as displaying "
             "earthquake event locations, instrument responses, and waveforms obtained from various seismic station "
             "networks worldwide.\n\n"
-            "**Developer Information:**\n"
-            "This program was developed by:\n"
-            "The QuakeSee Development Team - Yudha Styawan\n"
-            "Lecturer, Geophysics Engineering - Institut Teknologi Sumatera\n"
+            "**Developer Information:**\n\n"
+            "This program was developed by:\n\n"
+            "The QuakeSee Development Team - Yudha Styawan\n\n"
+            "Lecturer, Geophysics Engineering - Institut Teknologi Sumatera\n\n"
             "Contact: yudhastyawan26@gmail.com",
             styles={"font-size": "12pt", "font-family": "Segoe UI", "padding": "10px", "width": "350px"}
         )

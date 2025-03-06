@@ -2,6 +2,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,c++,git,visualstudiocode,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,c++,git,visualstudiocode,visualstudio
 
+mytest*
+
 ### C++ ###
 # Prerequisites
 *.d
