@@ -16,6 +16,7 @@ import matplotlib.dates as mdates
 import zipfile
 from obspy.core.inventory import read_inventory
 from obspy.core.inventory import Inventory, Network, Station
+import time
 
 class WaveFetcher(pn.Column):
     def __init__(self, **params):
@@ -451,6 +452,7 @@ class WaveFetcherParam(param.Parameterized):
                         pn.layout.Spacer(),
                         self.progress,
                     ),
+                self.status,
                 # sizing_mode='stretch_height'
             ),
             title='Search Parameters',
@@ -747,6 +749,7 @@ class WaveFetcherParam(param.Parameterized):
     
     def fetch_earthquake_data(self, event):
         try:
+            beginning = time.time()
             self.progress.active = True
             client = Client("IRIS")
             
@@ -777,11 +780,16 @@ class WaveFetcherParam(param.Parameterized):
             pn.state.notifications.error(f"Error fetching data: {str(e)}")
         finally:
             self.progress.active = False
+            execution_time = time.time() - beginning
+            txt = f"Finished! Duration {execution_time:.6f} s."
+            self.status.object = txt
 
     def search_stations(self, event):
         """Mencari stasiun berdasarkan parameter yang dimasukkan"""
         # try:
         self.progress.active = True
+        beginning = time.time()
+
         if not self.selected_quake:
             self.status.object = "Please select an earthquake first!"
             return
@@ -923,9 +931,10 @@ class WaveFetcherParam(param.Parameterized):
         #     pn.state.notifications.error(f"Station search failed: {str(msg)}")
 
         self.progress.active = False
+        execution_time = time.time() - beginning
         txt = f"search finished! {len(self.station_data)} stations"
         if self.seis_check.value: txt += f" and {len(self.waveform_data)} waveforms"
-        txt += " downloaded."
+        txt += f" downloaded. Duration {execution_time:.6f} s."
         self.status.object = txt
     
     def show_tm_plot(self, event):

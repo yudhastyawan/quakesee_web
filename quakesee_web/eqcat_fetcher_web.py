@@ -11,6 +11,7 @@ from bokeh.models import ColumnDataSource, BoxEditTool, WMTSTileSource
 import pyproj
 import io
 import zipfile
+import time
 
 class EQCatFetcher(pn.Column):
     def __init__(self, **params):
@@ -298,6 +299,8 @@ class EQCatFetcherParam(param.Parameterized):
         return base_url + query
     
     def download_catalog(self):
+        beginning = time.time()
+
         params = {
             "bot_lat": self.bot_lat,
             "top_lat": self.top_lat,
@@ -393,10 +396,12 @@ class EQCatFetcherParam(param.Parameterized):
         # Siapkan FileDownload
         zip_buffer.seek(0)
 
+        execution_time = time.time() - beginning
+
         self.progress = 100
         self.progress_bar.value = self.progress
 
-        self.status = "Status: Download complete! Automatically downloading the ZIP file."
+        self.status = f"Status: Download complete! Duration {execution_time:.6f} s, Automatically downloading the ZIP file."
         self.status_pane.object = self.status
 
         return zip_buffer
