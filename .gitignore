@@ -4,6 +4,8 @@
 
 mytest*
 
+.DS_Store
+
 ### C++ ###
 # Prerequisites
 *.d
