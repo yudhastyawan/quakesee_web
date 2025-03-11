@@ -2,6 +2,14 @@
 
 QuakeSee is an application for visualizing earthquake data, including event locations, instrument response, and waveforms from various seismic station networks.
 
+<div style="text-align: center;">
+
+![QuakeSee Web App UI](https://i.imgur.com/1vo0EsW.png)
+
+QuakeSee Web App ver. 0.1.0
+
+</div>
+
 ## Disclaimer:
 
 We are not responsible for any data processing errors that may occur in this program. 
